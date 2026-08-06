@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!--The Name Pair: The name attribute states the topic (e.g., viewport, description, keywords)
+    .The Content Value: The content attribute states the value or specific rule for that topic-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <!-- makes the website responsive on mobile phones and tablets.
+    width=device-width: Matches the page width to the screen size of the device in CSS pixels.
+    initial-scale=1.0: Sets the starting zoom level to 100% when the page first loads.-->
+    <meta name="description" content="A beautiful flower field">
+    <title>Leqaa's Flower Shop</title>
+    <style>
+        /* The asterisk: universal selector that targets all elements on the page. */
+        * { 
+            margin: 0; /*Margin creates space outside of an element. This sets all external spacing to zero*/
+            padding: 0; /*Padding creates space inside of an element. This sets all internal spacing to zero*/
+            box-sizing: border-box; /*This changes the box model so that the width and height of an element includes its padding and border, making it easier to size elements consistently.*/
+            font-family: Arial, Helvetica, sans-serif; /* Sets the default font for the entire page to Arial, with Helvetica and sans-serif as fallbacks. */
+        }
+
+        body {
+            background-color: rgb(221, 149, 181); /* Sets the background color of the entire page to a light pink shade. */
+            display: flex; /* Enables Flexbox layout for the body, allowing for flexible alignment of child elements. */
+            /*If you remove this or change it to display: block; (the default), the alignment tools below it (justify-content and align-items) will stop working entirely, and your content will snap back to the top-left corner*/
+            justify-content: center; /* Centers the container horizontally within the body. 
+            If you change this to justify-content: flex-start;, your content moves to the left edge. If you change it to justify-content: flex-end;, it moves to the right edge.*/
+            align-items: center; /* Centers the container vertically within the body.*/
+            min-height: 100vh; /* Ensures the body takes up at least the full height of the viewport, allowing vertical centering to work correctly.
+            vh: viewport */
+        }
+
+        .container {
+            width: 90vw;
+            /* vw stands for "viewport width." Makes it take up 90% of the screen width */
+            max-width: 1200px;
+            /* Stops it from becoming overwhelmingly wide on huge monitors */
+            height: 81vh;
+            /* Takes up 80% of the screen height */
+            min-height: 550px;
+            /* Ensures it doesn't get squished vertically on small screens */
+            background-color: #ffffff; /* Sets the background color of the container to white. */
+            display: flex; /*flexbox places its children side-by-side in a row. This is the standard setup for a "split-screen" layout (like an image on the left, and a login form on the right). 
+            If you remove this, any elements inside this container will stack vertically (top to bottom) instead of sitting side-by-side.*/
+            box-shadow: 0px 15px 40px rgba(0, 0, 0, 100); /* Adds a subtle shadow below the container for a lifted effect. 0 means the shadow will not move left or right.The shadow is 15px down, 40px blur, and has a 10% (0.1)light opacity. */
+            border-radius: 20px; /* Rounds the corners of the container by 12 pixels. */
+            overflow: hidden; /* Ensures that any child elements that exceed the container's boundaries are clipped and not visible. */
+        }
+
+        .left {
+            width: 40%; /* Takes up 40% of the container's width */
+            padding: 40px; /* Adds 40px of padding on all sides inside the left section */
+            display: flex; /* Enables Flexbox layout for the left section */
+            flex-direction: column;  /* By default, Flexbox aligns items horizontally in a row (side-by-side). This line flips the axis vertically. 
+            Now, everything inside the left column will stack on top of each other like a standard list or paragraph stack*/
+            justify-content: space-between;/*. It pushes the first item to the very top, the last item to the very bottom, and distributes any remaining empty space evenly between the items in the middle.*/
+        }
+
+        .navbar { /*The container*/
+            /*In HTML, tags like <a>, <span>, <strong>, and <em> are born as "inline" elements. 
+                They only take up exactly as much width as the letters inside them require. 
+                They refuse to start on a new line or push other elements away vertically*/
+            display: flex; /* Arranges all the navigation links horizontally side-by-side in a single row.*/
+            gap: 20px; /* Adds 20px of space between each navigation link. */
+        }
+
+        .navbar a { /*The individual links inside the navbar*/
+            text-decoration: none; /*Removes the default, old-fashioned underline that browsers automatically slap onto all HTML hyperlinks (<a> tags).*/
+            color: #a72998;
+            font-size: 0.85rem; /* Sets the font size of the navigation links to 0.85 times the root element's font size (usually 16px). */
+            font-weight: 600; /* Makes the navigation links slightly bolder than normal text. */
+        }
+
+        .navbar a:hover { /*The interaction*/
+            color: #000; /* Changes the link color to black when the user hovers their mouse over it. */
+        }
+
+        .hero-text .tagline {
+            display: block; /* Makes the tagline a block-level element, ensuring it takes up the full width and starts on a new line. */
+            font-size: 1rem; /* Sets the font size of the tagline to 1 times the root element's font size (usually 16px). */
+            text-transform: uppercase; /* Converts all letters in the tagline to uppercase. */
+            letter-spacing: 1px; /* Adds 1px of space between each letter in the tagline for better readability and style. */
+            color: #888; /* Sets the color of the tagline text to a medium gray. */
+            margin-bottom: 12px; /* Adds 12px of space below the tagline to separate it from the heading. */
+        }
+
+        .hero-text h1 {
+            font-size: 2rem; /* Sets the font size of the main heading to 2 times the root element's font size (usually 32px). */
+            line-height: 1.2; /*: Sets the vertical spacing between lines of text within the heading if it wraps to a second line. A value of 1.2 keeps large headings tightly and neatly bound together.*/
+            color: #111;
+            margin-bottom: 15px; /* Adds 15px of space below the heading to separate it from the paragraph text. */
+        }
+
+        .hero-text p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .hero-text .shop-btn {
+            display: inline-block;/* Makes the button behave like a block-level element but only takes up as much width as its content. */
+            color: #000; 
+            font-weight: bold;
+            text-decoration: underline;
+            font-size: 0.9rem;
+        }
+
+        .hero-text .shop-btn:hover {
+            text-decoration: none; /* Removes the underline when hovered */
+            color: #666;           /* Fades the text slightly to a dark gray */
+        }
+
+        .contact-info {
+            margin-top: auto; /* This is a brilliant Flexbox trick. Because the parent element (.left) uses display: flex and flex-direction: column,
+             setting margin-top: auto tells the browser to calculate all remaining empty space inside that column and dump it directly above this element. 
+            This forces the contact info to stay pinned to the absolute bottom of the container, no matter how short or long the text above it is*/
+            font-size: 0.8rem;
+            color: #777;
+            padding-top: 50px; /* Adds a little space above it */
+        }
+
+        .pagination button {
+            border: 1px solid #d33577; /*Outlines each button with a thin, light-gray line. This defines the shape of the button against the background.*/
+            background: transparent;
+            padding: 8px 12px; /* Adds an internal space of 8 pixels at the top/bottom and 12 pixels on the left/right. 
+            This enlarges the clickable area of the button so it is easy to tap.*/
+            cursor: pointer; /*Changes the user's mouse cursor from a standard arrow into a pointing hand icon when they hover over the button.*/
+            margin-right: 4px; /* Adds a small space between each button so they don't touch each other. */
+        }
+
+        .pagination button.active {
+            background-color: #8d4656; /* Changes the background color of the active button to a dark pink shade. */
+            color: #fff; /* Changes the text color of the active button to white for better contrast against the dark background. */
+            border-color: #d33577; /* Keeps the border color of the active button the same as the other buttons for consistency. */
+        }
+
+        .right {
+            width: 60%;
+            padding: 20px; /* Adds 20px of padding on all sides inside the right section */
+            height: 100%; /*Forces the grid container to match the exact height of the parent card.*/
+            /* Keeps the grid inside the container height */
+            display: grid; /*Activates the CSS Grid layout engine on this element, enabling the creation of strict rows and columns.*/
+            grid-template-columns: 1fr 1fr; /*Creates two columns of equal width. 1fr means "1 fraction of the available space." [1, 2]
+            If you change this to 1fr 2fr;, the right column will be twice as wide as the left column.*/
+            grid-template-rows: 1fr 1.3fr;
+            gap: 15px;
+        }
+
+        .right img {
+            width: 100%; /*Forces every image to stretch and completely fill its designated grid cell.*/
+            height: 100%;
+            object-fit: cover;/*This is a crucial image safeguard. It tells the browser to crop the image to fit its grid cell perfectly without squishing or stretching the picture horizontally or vertically. It acts like a background image set to cover.*/
+            border-radius: 4px;
+            min-height: 0; 
+            /*This is a CSS Grid bug fix. By default, grid items refuse to shrink smaller than their content. 
+            Images have an inherent "natural" size that can override grid rows. Setting min-height: 0 forces the images to listen to the grid-template-rows rules instead of breaking out.
+            Changing the value: If you remove this, large images might expand the bottom row and ruin your height: 100%; card layout.*/
+        }
+
+        .img3 {
+            grid-column: span 2; /* Makes the third image stretch across both columns, creating a larger visual impact. */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="left">
+
+            <nav class="navbar">
+                <a href="#">About</a>
+                <a href="#">Shop</a>
+                <a href="#">Instagram</a>
+            </nav>
+
+            <div class="hero-text">
+                <span class="tagline"> Leqaa's Flower Shop </span>
+                <h1> Fresh Flowers Dilevered to Your Door</h1>
+                <p> This is where you can find beauty and elegance in every bloom, color, and shape.</p>
+                <a href="#" class="shop-btn"> Shop Now &rarr;</a>
+                <footer class="contact-info">Contact US at info@leqaasflowershop.com</footer>
+            </div>
+
+            <div class="pagination">
+                <button class="active">1</button>
+                <button>2</button>
+            </div>
+        </div>
+
+        <div class="right">
+            <img src="Images1/FlowerBouqet.jpg" alt="One of our flower bouqets" class="img1">
+            <img src="Images1/FlowerDecoration.jpg" alt="We offer flower decorations" class="img2">
+            <img src="Images1/FlowerShop.jpg" alt="This is our Flower Shop" class="img3">
+        </div>
+    </div>
+
+</body>
+
+</html>
