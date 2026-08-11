@@ -22,46 +22,11 @@ let statuscontainer = document.getElementById("status");
 
 if (statuscontainer) {
     if (internshipSearch == true) {
-        statuscontainer.innerHTML = '<p style="color: green; font-weight: bold; margin-top: 10px;">Currently looking for internship opportunities!</p>';
+        statuscontainer.innerHTML = '<p style="color: rgb(196, 252, 28); font-weight: bold; margin-top: 10px;">Currently looking for internship opportunities!</p>';
     }
     else {
-        statuscontainer.innerHTML = '<p style="color: black; font-weight: bold; margin-top: 10px;">Focused on Studies & Research</p>';
+        statuscontainer.innerHTML = '<p style="color: white; font-weight: bold; margin-top: 10px;">Focused on Studies & Research</p>';
     }
-}
-
-const featuredProjects = [
-    {
-        title: "AI/ML Research",
-        desc: "Educational research project at SJSU.",
-        img: "#",
-        className: "img1"
-    },
-
-    {
-        title: "Bilingual Education Research",
-        desc: "Educational research project at SJSU.",
-        img: "#",
-        className: "img2"
-    },
-
-    {
-        title: "Contact",
-        desc: "Interactive multi-page showcase.",
-        img: "#",
-        className: "img3",
-    }
-]
-
-let imgList = document.getElementById("projects-grid");
-
-if (imgList) {
-    let imgHTML = "";
-
-    for (let project of featuredProjects) {
-        imgHTML += `<img src="${project.img}" alt="${project.title}" class="${project.className}">`;
-    }
-
-    imgList.innerHTML = imgHTML;
 }
 
 const projectsData = [
@@ -84,6 +49,13 @@ const projectsData = [
         Category: "Web Development",
         description: "A responsive, multi-page portfolio built with custom CSS layout grids, DOM manipulation, and dynamic JavaScript loops.",
         techStack: ["JavaScript", "CSS Grid", "HTML5"],
+        link: "#",
+    },
+    {
+        title: "DSA",
+        Category: "Data Structure & Algorithms",
+        description: "Applying DSA concepts into code",
+        techStack: ["Java", "Algorithms", "DS"],
         link: "#",
     }
 ]
@@ -144,4 +116,55 @@ if (contactForm) {
             contactForm.reset();
         }
     });
+}
+
+// --- ABOUT PAGE: SKILLS LIST ---
+const skillsData = [
+    "JavaScript (ES6+)", "HTML5 & CSS3", "Python", 
+    "AI/ML Research", "Data Analysis", "CSS Grid & Flexbox", 
+    "Git & GitHub", "Web Accessibility"
+];
+
+const skillsContainer = document.getElementById("skills-list");
+
+if (skillsContainer) {
+    let skillsHTML = "";
+    for (let skill of skillsData) {
+        skillsHTML += `<span class="skill-tag">${skill}</span>`;
+    }
+    skillsContainer.innerHTML = skillsHTML;
+}
+
+
+// --- ABOUT PAGE: EDUCATION & EXPERIENCE TIMELINE ---
+const timelineData = [
+    {
+        role: "B.S. Computer Science",
+        organization: "San José State University",
+        period: "Present",
+        details: "Focusing on software engineering, data structures, algorithms, and web applications."
+    },
+    {
+        role: "AI/ML Educational Researcher",
+        organization: "SJSU Research Initiatives",
+        period: "Ongoing",
+        details: "Conducting research on artificial intelligence and machine learning applications in educational environments."
+    }
+];
+
+const timelineContainer = document.getElementById("timeline-list");
+
+if (timelineContainer) {
+    let timelineHTML = "";
+    for (let item of timelineData) {
+        timelineHTML += `
+            <div class="timeline-item">
+                <span class="timeline-period">${item.period}</span>
+                <h3>${item.role}</h3>
+                <h4>${item.organization}</h4>
+                <p>${item.details}</p>
+            </div>
+        `;
+    }
+    timelineContainer.innerHTML = timelineHTML;
 }

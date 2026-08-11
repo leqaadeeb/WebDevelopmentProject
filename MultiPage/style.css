@@ -1,375 +1,564 @@
+/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-        /* The asterisk: universal selector that targets all elements on the page. */
-        * {
-            margin: 0;
-            /*Margin creates space outside of an element. This sets all external spacing to zero*/
-            padding: 0;
-            /*Padding creates space inside of an element. This sets all internal spacing to zero*/
-            box-sizing: border-box;
-            /*This changes the box model so that the width and height of an element includes its padding and border, making it easier to size elements consistently.*/
-            font-family: Arial, Helvetica, sans-serif;
-            /* Sets the default font for the entire page to Arial, with Helvetica and sans-serif as fallbacks. */
-        }
+/* 1. Force html and body to stretch completely */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    /* Apply background to the ENTIRE page root */
+    background-color: #1b7a73; /* Fallback teal color */
+    background-image: url('../MultiPage/Images1/Programming-Languages-and-Software-Engineering-page-header_1920x720_1.31.2024.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+}
 
-        body {
-            background-color: rgb(221, 149, 181);
-            /* Sets the background color of the entire page to a light pink shade. */
-            display: flex;
-            /* Enables Flexbox layout for the body, allowing for flexible alignment of child elements. */
-            /*If you remove this or change it to display: block; (the default), the alignment tools below it (justify-content and align-items) will stop working entirely, and your content will snap back to the top-left corner*/
-            justify-content: center;
-            /* Centers the container horizontally within the body. 
-            If you change this to justify-content: flex-start;, your content moves to the left edge. If you change it to justify-content: flex-end;, it moves to the right edge.*/
-            align-items: center;
-            /* Centers the container vertically within the body.*/
-            min-height: 100vh;
-            /* Ensures the body takes up at least the full height of the viewport, allowing vertical centering to work correctly.
-            vh: viewport */
-        }
+/* 2. Make .container transparent so body background shows through */
+.container {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    background: transparent; /* Remove background-image from here */
+    border-radius: 0;
+    box-shadow: none;
+}
 
-        .container {
-            width: 100vw;
-            /* vw stands for "viewport width." Makes it take up 90% of the screen width */
-            max-width: 1400px;
-            /* Stops it from becoming overwhelmingly wide on huge monitors */
-            height: 90vh;
-            /* Takes up 80% of the screen height */
-            min-height: 550px;
-            /* Ensures it doesn't get squished vertically on small screens */
-            background-color: #ffffff;
-            /* Sets the background color of the container to white. */
-            display: flex;
-            /*flexbox places its children side-by-side in a row. This is the standard setup for a "split-screen" layout (like an image on the left, and a login form on the right). 
-            If you remove this, any elements inside this container will stack vertically (top to bottom) instead of sitting side-by-side.*/
-            box-shadow: 0px 15px 40px rgba(0, 0, 0, 100);
-            /* Adds a subtle shadow below the container for a lifted effect. 0 means the shadow will not move left or right.The shadow is 15px down, 40px blur, and has a 10% (0.1)light opacity. */
-            border-radius: 20px;
-            /* Rounds the corners of the container by 12 pixels. */
-            overflow: hidden;
-            /* Ensures that any child elements that exceed the container's boundaries are clipped and not visible. */
-        }
+.homepage-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 10px;
+    align-items: center;
+    
+    min-height: 500px;
+}
 
-        .left {
-            width: 50%;
-            /* Takes up 40% of the container's width */
-            padding: 40px;
-            /* Adds 40px of padding on all sides inside the left section */
-            display: flex;
-            /* Enables Flexbox layout for the left section */
-            flex-direction: column;
-            /* By default, Flexbox aligns items horizontally in a row (side-by-side). This line flips the axis vertically. 
-            Now, everything inside the left column will stack on top of each other like a standard list or paragraph stack*/
-            justify-content: space-between;
-            /*. It pushes the first item to the very top, the last item to the very bottom, and distributes any remaining empty space evenly between the items in the middle.*/
-        }
+/* Reusable Card Box Styling */
+.card-box {
+    background-color: #f9f6f9;
+    border: 1px solid #e0d0e0;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+}
 
-        .navbar {
-            /*The container*/
-            /*In HTML, tags like <a>, <span>, <strong>, and <em> are born as "inline" elements. 
-                They only take up exactly as much width as the letters inside them require. 
-                They refuse to start on a new line or push other elements away vertically*/
-            display: flex;
-            /* Arranges all the navigation links horizontally side-by-side in a single row.*/
-            gap: 20px;
-            /* Adds 20px of space between each navigation link. */
-        }
+/* Homepage Left Column */
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    gap: 20px;
+    min-height: 400px;
+    align-items: center;
+}
 
-        .navbar a {
-            /*The individual links inside the navbar*/
-            text-decoration: none;
-            /*Removes the default, old-fashioned underline that browsers automatically slap onto all HTML hyperlinks (<a> tags).*/
-            color: #a72998;
-            font-size: 0.85rem;
-            /* Sets the font size of the navigation links to 0.85 times the root element's font size (usually 16px). */
-            font-weight: 600;
-            /* Makes the navigation links slightly bolder than normal text. */
-        }
+.Headline.card-box,
+.hero-text.card-box {
+    width: 100%;
+    width: fit-content;
+}
 
-        .navbar a:hover {
-            /*The interaction*/
-            color: #000;
-            /* Changes the link color to black when the user hovers their mouse over it. */
-        }
+.headline h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+}
 
-        .hero-text .tagline {
-            display: block;
-            /* Makes the tagline a block-level element, ensuring it takes up the full width and starts on a new line. */
-            font-size: 1rem;
-            /* Sets the font size of the tagline to 1 times the root element's font size (usually 16px). */
-            text-transform: uppercase;
-            /* Converts all letters in the tagline to uppercase. */
-            letter-spacing: 1px;
-            /* Adds 1px of space between each letter in the tagline for better readability and style. */
-            color: #888;
-            /* Sets the color of the tagline text to a medium gray. */
-            margin-bottom: 12px;
-            /* Adds 12px of space below the tagline to separate it from the heading. */
-        }
+.tagline {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #000;
+    letter-spacing: 1px;
+}
 
-        .hero-text h1 {
-            font-size: 2rem;
-            /* Sets the font size of the main heading to 2 times the root element's font size (usually 32px). */
-            line-height: 1.2;
-            /*: Sets the vertical spacing between lines of text within the heading if it wraps to a second line. A value of 1.2 keeps large headings tightly and neatly bound together.*/
-            color: #111;
-            margin-bottom: 15px;
-            /* Adds 15px of space below the heading to separate it from the paragraph text. */
-        }
+/* Call to Action Buttons */
+.buttom {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    flex-direction: column;
+    margin-top: auto;
+}
 
-        .hero-text p {
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
+.cta-buttons {
+    display: flex;
+    padding: 40px;
+    gap: 12px;
+    margin-top: 15px;
+}
 
-        .hero-text .view-btn {
-            display: inline-block;
-            /* Makes the button behave like a block-level element but only takes up as much width as its content. */
-            color: #000;
-            font-weight: bold;
-            text-decoration: underline;
-            font-size: 0.9rem;
-        }
+.btn-primary {
+    background-color: #a72998;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+}
 
-        .hero-text .view-btn:hover {
-            text-decoration: none;
-            /* Removes the underline when hovered */
-            color: #666;
-            /* Fades the text slightly to a dark gray */
-        }
+.btn-secondary {
+    background-color: #a72998;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+}
 
-        .contact-info {
-            margin-top: auto;
-            /* This is a brilliant Flexbox trick. Because the parent element (.left) uses display: flex and flex-direction: column,
-             setting margin-top: auto tells the browser to calculate all remaining empty space inside that column and dump it directly above this element. 
-            This forces the contact info to stay pinned to the absolute bottom of the container, no matter how short or long the text above it is*/
-            font-size: 0.8rem;
-            color: #777;
-            padding-top: 50px;
-            /* Adds a little space above it */
-        }
+/* Homepage Middle Column */
+.middle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
+    gap: 20px;
+}
 
-        .pagination button {
-            border: 1px solid #d33577;
-            /*Outlines each button with a thin, light-gray line. This defines the shape of the button against the background.*/
-            background: transparent;
-            padding: 8px 12px;
-            /* Adds an internal space of 8 pixels at the top/bottom and 12 pixels on the left/right. 
-            This enlarges the clickable area of the button so it is easy to tap.*/
-            cursor: pointer;
-            /*Changes the user's mouse cursor from a standard arrow into a pointing hand icon when they hover over the button.*/
-            margin-right: 4px;
-            /* Adds a small space between each button so they don't touch each other. */
-        }
+.imgOfMe img {
+    width: 250px;
+    height: 250px;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 1%;
+    border: 3px solid #a72998;
+}
 
-        .pagination button.active {
-            background-color: #8d4656;
-            /* Changes the background color of the active button to a dark pink shade. */
-            color: #fff;
-            /* Changes the text color of the active button to white for better contrast against the dark background. */
-            border-color: #d33577;
-            /* Keeps the border color of the active button the same as the other buttons for consistency. */
-        }
+/* Homepage Right Column */
+.right {
+    padding-top: 40px;
+}
 
-        .right {
-            width: 50%;
-            padding: 20px;
-            /* Adds 20px of padding on all sides inside the right section */
-            height: 100%;
-            /*Forces the grid container to match the exact height of the parent card.*/
-            /* Keeps the grid inside the container height */
-            display: grid;
-            /*Activates the CSS Grid layout engine on this element, enabling the creation of strict rows and columns.*/
-            grid-template-columns: 1fr 1fr;
-            /*Creates two columns of equal width. 1fr means "1 fraction of the available space." [1, 2]
-            If you change this to 1fr 2fr;, the right column will be twice as wide as the left column.*/
-            grid-template-rows: 1fr 1.3fr;
-            gap: 15px;
-        }
+.right p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #000;
+}
 
-        .right img {
-            width: 100%;
-            /*Forces every image to stretch and completely fill its designated grid cell.*/
-            height: 100%;
-            object-fit: cover;
-            /*This is a crucial image safeguard. It tells the browser to crop the image to fit its grid cell perfectly without squishing or stretching the picture horizontally or vertically. It acts like a background image set to cover.*/
-            border-radius: 4px;
-            min-height: 0;
-            /*This is a CSS Grid bug fix. By default, grid items refuse to shrink smaller than their content. 
-            Images have an inherent "natural" size that can override grid rows. Setting min-height: 0 forces the images to listen to the grid-template-rows rules instead of breaking out.
-            Changing the value: If you remove this, large images might expand the bottom row and ruin your height: 100%; card layout.*/
-        }
+.bio-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 15px;
+    padding-top: 12px;
+    border-top: 1px dashed #e0d0e0;
+}
 
-        .img3 {
-            grid-column: span 2;
-            /* Makes the third image stretch across both columns, creating a larger visual impact. */
-        }
-  
-       /* Container override for single-column contact page */
-        .single-column-container {
-            flex-direction: column;
-            padding: 40px;
-            justify-content: flex-start;
-            
-            gap: 20px;
-            overflow-y: auto;
-        }
+.middle p {
+    font-size: 1.2rem;
+}
 
-        .contact-header h1 {
-            display: flex;
-            justify-content: center;
-            font-size: 2rem;
-            color: #111;
-            margin-bottom: 8px;
-        }
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.5rem;
+    color: #000;
+}
 
-        .contact-header p {
-            display: flex;
-            justify-content: center;
-            color: #666;
-            font-size: 0.95rem;
-        }
+/* Navigation Bar */
+.navbar {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 20px;
+    padding-bottom: 50px;
+}
 
-        /* Form structure */
-        #contact-form {
-            display: flex;
-            justify-content: center;
-            align-self: center;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 600px;
-            width: 100%;
-        }
+.navbar a {
+    text-decoration: none;
+    color: #0c0c0c;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    padding:10px;
+}
 
-        .form-group {
-            display: flex;
-            justify-content: center;
-            align-self: center;
-            flex-direction: column;
-            gap: 5px;
-        }
+.navbar a:hover {
+    color: #fcfbfb;
+}
 
-        .form-group label {
-            display: flex;
-            align-self: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            font-weight: bold;
-            color: #333;
-            
-        }
+/* Single-Column Page Layout Override */
+.single-column-container {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    justify-content: flex-start;
+    gap: 20px;
+    overflow-y: auto;
+}
 
-        .form-group input,
-        .form-group textarea {
-            display: flex;
-            justify-content: center;
-            padding: 10px 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            align-self: center;
-        }
+/* Contact Page Styles */
+.contact-header h1 {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 2rem;
+    color: #111;
+    margin-bottom: 30px;
+}
 
-        /* Submit button styling */
-        #submit-btn {
-            display: flex;
-            justify-content: center;
-            padding: 12px;
-            background-color: #a72998;
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            align-self: center;
-        }
+.contact-header p {
+    display: flex;
+    justify-content: flex-start;
+    color: #e3d9df;
+    font-size: 1.3rem;
+}
 
-        #submit-btn:hover {
-            background-color: #8d4656;
-        }
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 30px;
+    width: 100%;
+    max-width: 1000px;
+    margin-left: 0;
+    margin-right: auto;
+    align-items: start;
+}
 
-        /* Projects Grid Layout */
-    #all-projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-        margin-top: 15px;
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-info h3 {
+    font-size: 1.2rem;
+    color: #111;
+}
+
+.contact-info p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.info-item strong {
+    font-size: 1rem;
+    color: #a72998;
+}
+
+.info-item p {
+    margin-top: 2px;
+}
+
+.info-item a {
+    color: #a72998;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#contact-form {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Make both the Info Box and Form card taller */
+.contact-info,
+#contact-form {
+    min-height: 400px;          /* 👈 Sets a consistent minimum tall height */
+    justify-content: space-between; /* Spreads out content vertically */
+}
+
+/* Increase internal vertical spacing for the info box */
+.contact-info {
+    padding: 40px 30px;         /* Adds more room at top and bottom */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+#submit-btn {
+    padding: 12px;
+    background-color: #a72998;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#submit-btn:hover {
+    background-color: #8d4656;
+}
+
+/* Projects Grid Layout */
+#all-projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.project-card {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fcfcfc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 1000px;       /* Forces ALL three boxes to be the exact same width */
+    max-width: 100%;
+}
+
+.project-category {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #a72998;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.project-card h3 {
+    font-size: 1.2rem;
+    color: #111;
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.tech-badge {
+    background-color: #eef;
+    color: #336;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.project-link {
+    color: #000;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.project-link:hover {
+    color: #a72998;
+}
+
+.about-header,
+.about-section {
+    width: 1000px;       /* Forces ALL three boxes to be the exact same width */
+    max-width: 100%;    /* Safety fallback so it shrinks gracefully on small mobile screens */
+}
+
+/* About Page Specific Styles */
+.about-header h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    color: #111;
+}
+
+.about-header p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    gap: 10px;
+}
+
+.about-section h2 {
+    font-size: 1.25rem;
+    color: #111;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #a72998;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tag {
+    background-color: #f0e6ee;
+    color: #a72998;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    border: 1px solid #e0d0e0;
+}
+
+#timeline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.timeline-item {
+    padding: 15px;
+    border-left: 4px solid #a72998;
+    background-color: #ffffff;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.timeline-period {
+    font-size: 0.75rem;
+    color: #777;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.timeline-item h3 {
+    font-size: 1.05rem;
+    color: #111;
+    margin: 4px 0 2px 0;
+}
+
+.timeline-item h4 {
+    font-size: 0.85rem;
+    color: #a72998;
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+.timeline-item p {
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ===================================================
+   RESPONSIVE LAYOUT & MEDIA QUERIES
+   =================================================== */
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Mobile & Small Screens (Up to 899px) */
+@media screen and (max-width: 899px) {
+
+    .container {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        padding: 20px 15px;
+        overflow-y: auto;
+        background-attachment: scroll; /* Prevents mobile bottom-white-space bug */
     }
 
-    /* Individual Project Card */
-    .project-card {
-        border: 1px solid #eee;
-        border-radius: 10px;
+    .homepage-container {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
         padding: 20px;
-        background-color: #fcfcfc;
+        min-height: auto;
+    }
+
+    .left {
+        min-height: auto;
+        height: auto;
+        gap: 15px;
+    }
+
+    .middle {
+        gap: 10px;
+    }
+
+    .imgOfMe img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .right {
+        padding-top: 0;
+    }
+
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    #contact-form {
+        max-width: 100%;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+    }
+
+    #all-projects-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .about-header,
+    .about-section {
+        width: 100%;    /* Takes full width on mobile screens */
+    }
+}
+
+/* Desktop Screens (900px and wider) */
+@media screen and (min-width: 900px) {
+
+    .homepage-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 30px;
+        align-items: center;
+        padding: 40px;
+        min-height: 500px;
+    }
+
+    .left {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        height: 100%;
+        min-height: 400px;
     }
 
-    .project-category {
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        color: #a72998;
-        font-weight: bold;
-        margin-bottom: 5px;
+    .imgOfMe img {
+        width: 250px;
+        height: 250px;
     }
-
-    .project-card h3 {
-        font-size: 1.2rem;
-        color: #111;
-        margin-bottom: 10px;
-    }
-
-    .project-card p {
-        font-size: 0.85rem;
-        color: #666;
-        line-height: 1.4;
-        margin-bottom: 15px;
-    }
-
-    /* Tech Badges */
-    .tech-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-bottom: 15px;
-    }
-
-    .tech-badge {
-        background-color: #eef;
-        color: #336;
-        font-size: 0.75rem;
-        padding: 4px 8px;
-        border-radius: 4px;
-    }
-
-    .project-link {
-        color: #000;
-        font-size: 0.85rem;
-        font-weight: bold;
-        text-decoration: underline;
-    }
-
-    .project-link:hover {
-        color: #a72998;
-    }
-
-    body {
-        font-size: 1rem;
-    }
-
-    /* Tablet screens and up */
-    @media screen and (min-width: 768px) {
-    body {
-        font-size: 1.1rem;
-    }
-    }
-
-    /* Desktop screens and up */
-    @media screen and (min-width: 1024px) {
-    body {
-        font-size: 1.2rem;
-    }
-    }
+}
