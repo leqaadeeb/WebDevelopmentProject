@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: bisque;
+}
+
+.container {
+    width: 40%;
+    max-width: 350px;
+    min-width: 250px;
+    background-color: rgb(206, 99, 126);
+    border: 5px solid black;
+}
+
+.display {
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+    width: 90%; 
+    height: 130px;
+    background-color: white;
+    margin: 10px auto;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+.button-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 5px;
+    padding: 5px;
+}
+
+.button {
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.button-special {
+    background-color: rgb(143, 182, 222);
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.button-delete {
+    background-color: rgb(157, 153, 153);
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 20px;
+    font-size: 16px;
+}
+.button:hover {
+    background-color: rgb(198, 86, 163);
+}
