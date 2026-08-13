@@ -19,7 +19,6 @@ body {
     width: 50%;
     padding: 10px;
     max-width: 350px;
-    min-width: 250px;
     background-color: rgb(104, 152, 220);
     border: 2px solid black;
     border-radius: 10px;
@@ -31,7 +30,7 @@ body {
 .pageTitle h1{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
-    font-size: 35px;
+    font-size: clamp(25px, 5vw, 30px);
     text-align: center;
 }
 .input-field input {

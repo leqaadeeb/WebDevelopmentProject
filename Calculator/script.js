@@ -74,8 +74,14 @@ function handleClick(event) {
                 
             for(let i = 1; i < numbers.length; i++)
             {
-
-                total = total / parseFloat(numbers[i]);
+                if(parseFloat(numbers[i]) == 0)
+                {
+                    displayElement.textContent = "Can't divide by zero";
+                    return;
+                }
+                else{
+                    total = total / parseFloat(numbers[i]);
+                }
             }
 
             displayElement.textContent = total;
